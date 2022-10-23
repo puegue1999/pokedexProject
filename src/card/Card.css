@@ -1,0 +1,395 @@
+.totalCard {
+    padding: 1em;
+}
+
+.grass {
+    width: 190px;
+    height: 120px;
+    background-color: #68B34B;
+    text-align: center;
+    border: 10px solid #77CC55;
+    border-radius: 20px;
+    box-shadow: inset 5px 5px 10px #528C3B, inset -5px -5px 10px #7FD95B;
+    transition: 0.5s;
+}
+
+.grass:hover {
+    height: 250px;
+}
+
+.grassIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    background-color: #77CC55;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 8px 8px 10px #528C3B, -8px -8px 10px #7FD95B;
+}
+
+.grassContent {
+    color: #999;
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px 20px;
+    border-radius: 8px;
+    box-shadow: 8px 8px 10px #69c645, -8px -8px 10px #AEE354;
+    transform: translateY(-80px) scale(0);
+    transition: all 0.5s;
+}
+
+.grass:hover .grassContent {
+    transform: translateY(0) scale(1)
+}
+
+.grassContent h3 {
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.fire {
+    width: 190px;
+    height: 120px;
+    background-color: #E37120;
+    text-align: center;
+    border: 10px solid #FD7D24;
+    border-radius: 20px;
+    box-shadow: inset 5px 5px 10px #BD5E1A, inset -5px -5px 10px #FF8E3D;
+    transition: 0.5s;
+}
+
+.fire:hover {
+    height: 250px;
+}
+
+.fireIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    background-color: #FD7D24;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 8px 8px 10px #BD5E1A, -8px -8px 10px #FF8E3D;
+}
+
+.fireContent {
+    color: #999;
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px 20px;
+    border-radius: 8px;
+    box-shadow: 8px 8px 10px #BD5E1A, -8px -8px 10px #FF8E3D;
+    transform: translateY(-80px) scale(0);
+    transition: all 0.5s;
+}
+
+.fire:hover .fireContent {
+    transform: translateY(0) scale(1)
+}
+
+.fireContent h3 {
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.water {
+    width: 190px;
+    height: 120px;
+    background-color: #2E6285;
+    text-align: center;
+    border: 10px solid #4592C4;
+    border-radius: 20px;
+    box-shadow: inset 5px 5px 10px #183345, inset -5px -5px 10px #3C7EAB;
+    transition: 0.5s;
+}
+
+.water:hover {
+    height: 250px;
+}
+
+.waterIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    background-color: #4592C4;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 8px 8px 10px #183345, -8px -8px 10px #3C7EAB;
+}
+
+.waterContent {
+    color: #999;
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px 20px;
+    border-radius: 8px;
+    box-shadow: 8px 8px 10px #183345, -8px -8px 10px #3C7EAB;
+    transform: translateY(-80px) scale(0);
+    transition: all 0.5s;
+}
+
+.water:hover .waterContent {
+    transform: translateY(0) scale(1)
+}
+
+.waterContent h3 {
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.bug {
+    width: 190px;
+    height: 120px;
+    background-color: #55B53F;
+    text-align: center;
+    border: 10px solid #729F3F;
+    border-radius: 20px;
+    box-shadow: inset 5px 5px 10px #3CAB4B, inset -5px -5px 10px #A7B53F;
+    transition: 0.5s;
+}
+
+.bug:hover {
+    height: 250px;
+}
+
+.bugIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    background-color: #729F3F;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 5px 5px 10px #3CAB4B, inset -5px -5px 10px #A7B53F;
+}
+
+.bugContent {
+    color: #999;
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px 20px;
+    border-radius: 8px;
+    box-shadow: inset 5px 5px 10px #3CAB4B, inset -5px -5px 10px #A7B53F;
+    transform: translateY(-80px) scale(0);
+    transition: all 0.5s;
+}
+
+.bug:hover .bugContent {
+    transform: translateY(0) scale(1)
+}
+
+.bugContent h3 {
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.flying {
+    width: 190px;
+    height: 120px;
+    background-color: #BDB9B8;
+    text-align: center;
+    border: 10px solid #3DC7EF;
+    border-radius: 20px;
+    box-shadow: inset 5px 5px 10px #2E87D9, inset -5px -5px 10px #34F8B7;
+    transition: 0.5s;
+}
+
+.flying:hover {
+    height: 250px;
+}
+
+.flyingIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    background-color: #3DC7EF;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 5px 5px 10px #2E87D9, inset -5px -5px 10px #34F8B7;
+}
+
+.flyingContent {
+    color: #999;
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px 20px;
+    border-radius: 8px;
+    box-shadow: inset 5px 5px 10px #2E87D9, inset -5px -5px 10px #34F8B7;
+    transform: translateY(-80px) scale(0);
+    transition: all 0.5s;
+}
+
+.flying:hover .flyingContent {
+    transform: translateY(0) scale(1)
+}
+
+.flyingContent h3 {
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.normal {
+    width: 190px;
+    height: 120px;
+    background-color: #B1C7C7;
+    text-align: center;
+    border: 10px solid #A4ACAF;
+    border-radius: 20px;
+    box-shadow: inset 5px 5px 10px #A8ACBD, inset -5px -5px 10px #B1BBC7;
+    transition: 0.5s;
+}
+
+.normal:hover {
+    height: 250px;
+}
+
+.normalIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    background-color: #A4ACAF;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 5px 5px 10px #A8ACBD, inset -5px -5px 10px #B1BBC7;
+}
+
+.normalContent {
+    color: #999;
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px 20px;
+    border-radius: 8px;
+    box-shadow: inset 5px 5px 10px #A8ACBD, inset -5px -5px 10px #B1BBC7;
+    transform: translateY(-80px) scale(0);
+    transition: all 0.5s;
+}
+
+.normal:hover .normalContent {
+    transform: translateY(0) scale(1)
+}
+
+.normalContent h3 {
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.poison {
+    width: 190px;
+    height: 120px;
+    background-color: #E082D7;
+    text-align: center;
+    border: 10px solid #B97FC9;
+    border-radius: 20px;
+    box-shadow: inset 5px 5px 10px #D67CA0, inset -5px -5px 10px #B282E0;
+    transition: 0.5s;
+}
+
+.poison:hover {
+    height: 250px;
+}
+
+.poisonIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    background-color: #B97FC9;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 5px 5px 10px #D67CA0, inset -5px -5px 10px #B282E0;
+}
+
+.poisonContent {
+    color: #999;
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px 20px;
+    border-radius: 8px;
+    box-shadow: inset 5px 5px 10px #D67CA0, inset -5px -5px 10px #B282E0;
+    transform: translateY(-80px) scale(0);
+    transition: all 0.5s;
+}
+
+.poison:hover .poisonContent {
+    transform: translateY(0) scale(1)
+}
+
+.poisonContent h3 {
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.electric {
+    width: 190px;
+    height: 120px;
+    background-color: #D6AD24;
+    text-align: center;
+    border: 10px solid #EED535;
+    border-radius: 20px;
+    box-shadow: inset 5px 5px 10px #C7F72A, inset -5px -5px 10px #F7B22A;
+    transition: 0.5s;
+}
+
+.electric:hover {
+    height: 250px;
+}
+
+.electricIcon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    background-color: #EED535;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 5px 5px 10px #C7F72A, inset -5px -5px 10px #F7B22A;
+}
+
+.electricContent {
+    color: #999;
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px 20px;
+    border-radius: 8px;
+    box-shadow: inset 5px 5px 10px #C7F72A, inset -5px -5px 10px #F7B22A;
+    transform: translateY(-80px) scale(0);
+    transition: all 0.5s;
+}
+
+.electric:hover .electricContent {
+    transform: translateY(0) scale(1)
+}
+
+.electricContent h3 {
+    text-shadow: 2px 2px 0px #fff;
+}
