@@ -5,47 +5,53 @@ import './AllCards.css';
 
 function AllCards() {
 
-    const [allPokemons, setAllPokemons] = useState([]);
+    localStorage.setItem('pesquisou', 'false');
     const [pokemons, setPokemons] = useState([]);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+    const [nextPage, setNextPage] = useState(null);
+    const [previustPage, setPreviusPage] = useState(null);
 
     const getAllPokemon = async () => {
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=18`);
-        setAllPokemons(res.data.results);
+        localStorage.removeItem('pesquisou');
+        localStorage.setItem('pesquisou', 'true');
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=18`);
+        getPokemon(res.data.results);
+        setNextPage(res.data.next);
+        setPreviusPage(res.data.previus);
     }
 
-    const getPokemon = async(res) => {
-        await res.map( async(pokemon) => {
+    const getPokemon = async (res) => {
+        await res.map(async (pokemon) => {
             const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
             setPokemons(state => {
-                state=[...state, result.data]
+                state = [...state, result.data];
                 return state;
             });
-        })
+        });
         setLoading(false);
-        await console.log(pokemons);
-    }
-
-    const stylePokemon = () => {
-
     }
 
     useEffect(() => {
-        getAllPokemon();
+        if (localStorage.getItem('pesquisou') === 'false') {
+            getAllPokemon();
+        }
     }, [])
-
-    useEffect(() => {
-        console.log(allPokemons);
-        getPokemon(allPokemons);
-    }, [allPokemons])
 
     return (
         loading ? (<h1>Loading...</h1>) :
-            (<div className="sixCards">
-                <div className="all-container">
-                    {
-                        pokemons.sort((idA, idB) =>
-                            idA.id - idB.id
+            (<div className="mainCards">
+                <div>
+                    <button class="previus">
+                        <span class="circle" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                        </span>
+                    </button>
+                </div>
+                <div className="sixCards">
+                    <div className="all-container">
+                        {
+                            pokemons.sort((idA, idB) =>
+                                idA.id - idB.id
                             ).map((pokemon, index) =>
                                 <Card
                                     id={pokemon.id}
@@ -55,11 +61,13 @@ function AllCards() {
                                     key={index}
                                 />
                             )
-                        
-                    }
+
+                        }
+                    </div>
                 </div>
+                <div>alo</div>
             </div>)
-        
+
     );
 }
 
