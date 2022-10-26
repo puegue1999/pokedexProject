@@ -9,15 +9,15 @@ function AllCards() {
     const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState(true);
     const [nextPage, setNextPage] = useState(null);
-    const [previustPage, setPreviusPage] = useState(null);
+    const [previusPage, setPreviusPage] = useState(null);
 
     const getAllPokemon = async () => {
         localStorage.removeItem('pesquisou');
         localStorage.setItem('pesquisou', 'true');
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=18`);
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=15`);
         getPokemon(res.data.results);
         setNextPage(res.data.next);
-        setPreviusPage(res.data.previus);
+        setPreviusPage(res.data.previous);
     }
 
     const getPokemon = async (res) => {
@@ -37,14 +37,29 @@ function AllCards() {
         }
     }, [])
 
+    const returnPage = async () => {
+        const res = await axios.get(previusPage);
+        while (pokemons.length) pokemons.pop();
+        getPokemon(res.data.results);
+        setNextPage(res.data.next);
+        setPreviusPage(res.data.previous);
+    }
+
+    const proxPage = async () => {
+        const res = await axios.get(nextPage);
+        while (pokemons.length) pokemons.pop();
+        getPokemon(res.data.results);
+        setNextPage(res.data.next);
+        setPreviusPage(res.data.previous);
+    }
+
     return (
         loading ? (<h1>Loading...</h1>) :
             (<div className="mainCards">
                 <div>
-                    <button class="previus">
-                        <span class="circle" aria-hidden="true">
-                            <span class="icon arrow"></span>
-                        </span>
+                    <button className="previus"
+                        onClick={e => returnPage()}
+                        disabled={!previusPage}>
                     </button>
                 </div>
                 <div className="sixCards">
@@ -65,7 +80,12 @@ function AllCards() {
                         }
                     </div>
                 </div>
-                <div>alo</div>
+                <div>
+                    <button className="previus"
+                        onClick={e => proxPage()}
+                        disabled={!nextPage}>
+                    </button>
+                </div>
             </div>)
 
     );
