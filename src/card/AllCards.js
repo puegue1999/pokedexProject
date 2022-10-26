@@ -8,49 +8,45 @@ function AllCards() {
     localStorage.setItem('pesquisou', 'false');
     const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?offset=0&limit=15');
     const [nextPage, setNextPage] = useState(null);
     const [previusPage, setPreviusPage] = useState(null);
 
-    const getAllPokemon = async () => {
+
+    const getAllPokemon = async (url) => {
         localStorage.removeItem('pesquisou');
         localStorage.setItem('pesquisou', 'true');
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=15`);
-        getPokemon(res.data.results);
-        setNextPage(res.data.next);
-        setPreviusPage(res.data.previous);
-    }
+        const result = await axios.get(url);
 
-    const getPokemon = async (res) => {
-        await res.map(async (pokemon) => {
-            const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
+        const getPokemon = async (res) => {
+            const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${res}`);
             setPokemons(state => {
                 state = [...state, result.data];
                 return state;
             });
-        });
+        }
+
+        result.data.results.map((pokemon) => getPokemon(pokemon.name));
+        setNextPage(result.data.next);
+        setPreviusPage(result.data.previous);
         setLoading(false);
     }
 
     useEffect(() => {
         if (localStorage.getItem('pesquisou') === 'false') {
-            getAllPokemon();
+            getAllPokemon(url);
         }
-    }, [])
+    }, [url]);
 
     const returnPage = async () => {
-        const res = await axios.get(previusPage);
         while (pokemons.length) pokemons.pop();
-        getPokemon(res.data.results);
-        setNextPage(res.data.next);
-        setPreviusPage(res.data.previous);
+        setUrl(previusPage);
     }
 
     const proxPage = async () => {
-        const res = await axios.get(nextPage);
         while (pokemons.length) pokemons.pop();
-        getPokemon(res.data.results);
-        setNextPage(res.data.next);
-        setPreviusPage(res.data.previous);
+        console.log(pokemons.length);
+        setUrl(nextPage);
     }
 
     return (
