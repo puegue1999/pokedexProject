@@ -1,10 +1,25 @@
 import { estiloCard } from '../const/estiloCard';
-import './Card.css'
+import './Card.css';
+import React, { useState }  from 'react';
+import ModalCard from './ModalCard.tsx';
+
 
 function Card(props) {
 
+    const [modalCard, setModalCard] = useState(false);
+
+    const eventoAbrirModal = e => {
+        console.log("true");
+        setModalCard(true);
+    };
+
+    const eventoFecharModal = event => {
+        event.preventDefault();
+        setModalCard(false);
+    };
+
     return (
-        <div className="totalCard">
+        <div className="totalCard" onClick={eventoAbrirModal}>
             <div className="card"
                 style={{
                     backgroundColor: estiloCard[props.type].backgroundColor,
@@ -27,6 +42,12 @@ function Card(props) {
                     <p> Type: {props.type} </p>
                 </div>
             </div>
+            <ModalCard
+                showModal={modalCard}
+                eventoFecharModal={eventoFecharModal}
+                titulo={props.name}
+                informacao={props.type}
+            />
         </div>
     );
 }

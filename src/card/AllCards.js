@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card.js';
 import './AllCards.css';
+import React  from 'react';
 
 function AllCards() {
 
@@ -32,6 +33,10 @@ function AllCards() {
         setLoading(false);
     }
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     useEffect(() => {
         if (localStorage.getItem('pesquisou') === 'false') {
             getAllPokemon(url);
@@ -39,50 +44,59 @@ function AllCards() {
     }, [url]);
 
     const returnPage = async () => {
+        setLoading(true);
         while (pokemons.length) pokemons.pop();
+        await sleep(1000);
         setUrl(previusPage);
     }
 
     const proxPage = async () => {
+        setLoading(true);
         while (pokemons.length) pokemons.pop();
-        console.log(pokemons.length);
+        await sleep(1000);
         setUrl(nextPage);
     }
 
     return (
-        loading ? (<h1>Loading...</h1>) :
-            (<div className="mainCards">
-                <div>
-                    <button className="previus"
-                        onClick={e => returnPage()}
-                        disabled={!previusPage}>
-                    </button>
-                </div>
-                <div className="sixCards">
-                    <div className="all-container">
-                        {
-                            pokemons.sort((idA, idB) =>
-                                idA.id - idB.id
-                            ).map((pokemon, index) =>
-                                <Card
-                                    id={pokemon.id}
-                                    name={pokemon.name}
-                                    image={pokemon.sprites.front_default}
-                                    type={pokemon.types[0].type.name}
-                                    key={index}
-                                />
-                            )
-
-                        }
+        loading ? (
+            <div className="mainCards">
+                <div className="loader"/>
+            </div>
+            ) : (
+                <div className="mainCards">
+                    <div className="buttons">
+                        <button
+                            onClick={e => returnPage()}
+                            disabled={!previusPage}>
+                                <spam>&#9664; </spam>
+                        </button>
+                    </div>
+                    <div className="sixCards">
+                        <div className="all-container">
+                            {
+                                pokemons.sort((idA, idB) =>
+                                    idA.id - idB.id
+                                ).map((pokemon, index) =>
+                                    <Card
+                                        id={pokemon.id}
+                                        name={pokemon.name}
+                                        image={pokemon.sprites.front_default}
+                                        type={pokemon.types[0].type.name}
+                                        key={index}
+                                    />
+                                )
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        <button
+                            onClick={e => proxPage()}
+                            disabled={!nextPage}>
+                                <spam>&#9654; </spam>
+                        </button>
                     </div>
                 </div>
-                <div>
-                    <button className="previus"
-                        onClick={e => proxPage()}
-                        disabled={!nextPage}>
-                    </button>
-                </div>
-            </div>)
+            )
 
     );
 }

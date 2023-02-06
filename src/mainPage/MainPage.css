@@ -1,17 +1,24 @@
 .mainPage {
     text-align: center;
+    background-image: url("https://i.pinimg.com/originals/2a/1d/d7/2a1dd7860f40ebd2c054644a4448b86e.jpg");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .header {
-    min-height: 10vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    top: 0%;
+    width: 100%;
+    position: fixed;
+    text-decoration: none;
+    background-color: #333;
+    padding: 1em;
 }
 
 .mainBody {
-    max-height: 80vh;
+    min-height: 49.3em;
+    max-height: 49.3em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,9 +26,10 @@
 }
 
 .footer {
-    min-height: 10vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    top: 94%;
+    width: 100%;
+    position: fixed;
+    text-decoration: none;
+    background-color: #333;
+    padding: 1em;
 }
