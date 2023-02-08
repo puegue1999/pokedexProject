@@ -9,7 +9,7 @@ function Card(props) {
     const [modalCard, setModalCard] = useState(false);
 
     const eventoAbrirModal = e => {
-        console.log("true");
+        console.log([props.pokemon]);
         setModalCard(true);
     };
 
@@ -38,7 +38,7 @@ function Card(props) {
                     style={{
                         boxShadow: 'inset 0.3rem 0.3rem 0.625rem ' + estiloCard[props.type].content + ', inset -0.3rem -0.3rem 0.625rem ' + estiloCard[props.type].boxShadowSecond,
                     }}>
-                    <h3>{props.name}</h3>
+                    {props.name}
                     <p> Type: {props.type} </p>
                 </div>
             </div>
@@ -46,7 +46,10 @@ function Card(props) {
                 showModal={modalCard}
                 eventoFecharModal={eventoFecharModal}
                 titulo={props.name}
+                type={props.type}
+                image={props.image}
                 informacao={props.type}
+                pokemon={props.pokemon}
             />
         </div>
     );

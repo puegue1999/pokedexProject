@@ -33,8 +33,8 @@ function AllCards() {
         setLoading(false);
     }
 
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+    function capitalize(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
     useEffect(() => {
@@ -46,14 +46,12 @@ function AllCards() {
     const returnPage = async () => {
         setLoading(true);
         while (pokemons.length) pokemons.pop();
-        await sleep(1000);
         setUrl(previusPage);
     }
 
     const proxPage = async () => {
         setLoading(true);
         while (pokemons.length) pokemons.pop();
-        await sleep(1000);
         setUrl(nextPage);
     }
 
@@ -79,10 +77,11 @@ function AllCards() {
                                 ).map((pokemon, index) =>
                                     <Card
                                         id={pokemon.id}
-                                        name={pokemon.name}
+                                        name={capitalize(pokemon.name)}
                                         image={pokemon.sprites.front_default}
                                         type={pokemon.types[0].type.name}
                                         key={index}
+                                        pokemon={pokemon}
                                     />
                                 )
                             }
