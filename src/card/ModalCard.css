@@ -11,29 +11,157 @@
     align-items: center;
 }
 
+.modalNone {
+    display: none;
+    font-size: 1em;
+}
+
 .modalContainer {
-    width: 40em;
+    width: 55em;
     height: 25em;
     text-align: center;
     border-radius: 1.25em;
     transition: 0.5s;
-}
-
-.head {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    background-color: #DC0A2D;
+    border: 0.625rem solid #DC0A2D;
+    box-shadow: inset 0.3rem 0.3rem 0.625rem #89071e, inset -0.3rem -0.3rem 0.625rem #440006;
+}
+
+.contentPokedex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1em;
+    margin: 1.25em;
+    border-radius: .5em;
+    border: 0.4rem solid #42010C;
+    background-color: #8F041B;
+    box-shadow: 0.3rem 0.3rem 0.625rem #440006, inset 0.3rem 0.3rem 0.625rem #D60B30, inset -0.3rem -0.3rem 0.625rem #960822;
 }
 
 .iconModal {
-    width: 2.75em;
-    height: 2.75em;
+    width: 5em;
+    height: 4em;
     font-size: 1.875em;
-    margin: 0.4em;
     padding: .313em;
-    border-radius: 50%;
+    border-radius: 30%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    border: 0.4rem solid #232323;
+}
+
+.nome {
+    background-color: #dedede;
+    border: 0.4rem solid #232323;
+    box-shadow: inset 0.3rem 0.3rem 0.625rem #71706d, inset -0.3rem -0.3rem 0.625rem #71706d;
+    border-radius: .5em;
+}
+
+.entry {
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-width: .2rem;
+}
+
+.stats {
+    padding: .313em;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.4rem solid #232323;
+    border-radius: .5em;
+    border-top-width: .2rem;
+}
+
+.statBlock {
+    display: flex;
+    flex-direction: row;
+}
+
+.stat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 10em;
+}
+
+h5 {
+    padding: .5em;
+}
+
+p {
+    padding: 0 .5em;
+}
+
+progress {
+    width: 6em;
+    height: 1em;
+    border-radius: 40%;
+}
+
+.hpBar::-webkit-progress-value {
+    background: #ff0000;
+}
+
+.hpBar::-webkit-progress-bar {
+    background: #ff5959;
+}
+
+.atkBar::-webkit-progress-value {
+    background: #f08030;
+}
+
+.atkBar::-webkit-progress-bar {
+    background: #f5ac78;
+}
+
+.defBar::-webkit-progress-value {
+    background: #f8d030;
+}
+
+.defBar::-webkit-progress-bar {
+    background: #fae078;
+}
+
+.spAtkBar::-webkit-progress-value {
+    background: #6890f0;
+}
+
+.spAtkBar::-webkit-progress-bar {
+    background: #9db7f5;
+}
+
+.spDefBar::-webkit-progress-value {
+    background: #78c850;
+}
+
+.spDefBar::-webkit-progress-bar {
+    background: #a7db8d;
+}
+
+.speedBar::-webkit-progress-value {
+    background: #f85888;
+}
+
+.speedBar::-webkit-progress-bar {
+    background: #fa92b2;
+}
+
+.exit {
+    display:"flex";
+    justify-content:"center";
+    height: 20%;
+}
+
+.botaoOk {
+    margin: 1em;
 }

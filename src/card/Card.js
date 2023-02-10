@@ -8,47 +8,43 @@ function Card(props) {
 
     const [modalCard, setModalCard] = useState(false);
 
-    const eventoAbrirModal = e => {
-        console.log([props.pokemon]);
+    const eventoAbrirModal = () => {
         setModalCard(true);
     };
 
-    const eventoFecharModal = event => {
-        event.preventDefault();
+    const eventoFecharModal = () => {
         setModalCard(false);
     };
 
     return (
-        <div className="totalCard" onClick={eventoAbrirModal}>
+        <div className="totalCard">
             <div className="card"
+                onClick={eventoAbrirModal}
                 style={{
-                    backgroundColor: estiloCard[props.type].backgroundColor,
-                    border: '0.625rem solid ' + estiloCard[props.type].backgroundColor,
-                    boxShadow: 'inset 0.3rem 0.3rem 0.625rem ' + estiloCard[props.type].boxShadowFirst + ', inset -0.3rem -0.3rem 0.625rem ' + estiloCard[props.type].boxShadowSecond,
+                    backgroundColor: estiloCard[props.pokemon.types[0].type.name].backgroundColor,
+                    border: '0.625rem solid ' + estiloCard[props.pokemon.types[0].type.name].backgroundColor,
+                    boxShadow: 'inset 0.3rem 0.3rem 0.625rem ' + estiloCard[props.pokemon.types[0].type.name].boxShadowFirst + ', inset -0.3rem -0.3rem 0.625rem ' + estiloCard[props.pokemon.types[0].type.name].boxShadowSecond,
                 }}>
                 <div className="icon"
                     style={{
-                        backgroundColor: estiloCard[props.type].backgroundColor,
-                        boxShadow: 'inset 0.3rem 0.3rem 0.625rem ' + estiloCard[props.type].content + ', inset -0.3rem -0.3rem 0.625rem ' + estiloCard[props.type].boxShadowSecond,
+                        backgroundColor: estiloCard[props.pokemon.types[0].type.name].backgroundColor,
+                        boxShadow: 'inset 0.3rem 0.3rem 0.625rem ' + estiloCard[props.pokemon.types[0].type.name].content + ', inset -0.3rem -0.3rem 0.625rem ' + estiloCard[props.pokemon.types[0].type.name].boxShadowSecond,
                     }}>
-                    <img src={props.image} alt={props.name} />
+                    <img src={props.pokemon.sprites.front_default} alt={props.name} />
                 </div>
 
                 <div className="content"
                     style={{
-                        boxShadow: 'inset 0.3rem 0.3rem 0.625rem ' + estiloCard[props.type].content + ', inset -0.3rem -0.3rem 0.625rem ' + estiloCard[props.type].boxShadowSecond,
+                        boxShadow: 'inset 0.3rem 0.3rem 0.625rem ' + estiloCard[props.pokemon.types[0].type.name].content + ', inset -0.3rem -0.3rem 0.625rem ' + estiloCard[props.pokemon.types[0].type.name].boxShadowSecond,
                     }}>
-                    {props.name}
-                    <p> Type: {props.type} </p>
+                    <p>#{props.pokemon.id} {props.name}</p>
+                    <p> Type: {props.pokemon.types[0].type.name} </p>
                 </div>
             </div>
             <ModalCard
                 showModal={modalCard}
                 eventoFecharModal={eventoFecharModal}
                 titulo={props.name}
-                type={props.type}
-                image={props.image}
-                informacao={props.type}
                 pokemon={props.pokemon}
             />
         </div>

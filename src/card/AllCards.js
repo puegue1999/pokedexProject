@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card.js';
+import Loader from './Loader.js';
 import './AllCards.css';
 import React  from 'react';
 
@@ -18,6 +19,7 @@ function AllCards() {
         localStorage.removeItem('pesquisou');
         localStorage.setItem('pesquisou', 'true');
         const result = await axios.get(url);
+        console.log(result.data);
 
         const getPokemon = async (res) => {
             const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${res}`);
@@ -30,7 +32,12 @@ function AllCards() {
         result.data.results.map((pokemon) => getPokemon(pokemon.name));
         setNextPage(result.data.next);
         setPreviusPage(result.data.previous);
+        await sleep(1000);
         setLoading(false);
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     function capitalize(str) {
@@ -43,13 +50,13 @@ function AllCards() {
         }
     }, [url]);
 
-    const returnPage = async () => {
+    const returnPage = () => {
         setLoading(true);
         while (pokemons.length) pokemons.pop();
         setUrl(previusPage);
     }
 
-    const proxPage = async () => {
+    const proxPage = () => {
         setLoading(true);
         while (pokemons.length) pokemons.pop();
         setUrl(nextPage);
@@ -57,9 +64,7 @@ function AllCards() {
 
     return (
         loading ? (
-            <div className="mainCards">
-                <div className="loader"/>
-            </div>
+                <Loader className="mainCards" />
             ) : (
                 <div className="mainCards">
                     <div className="buttons">
@@ -76,12 +81,9 @@ function AllCards() {
                                     idA.id - idB.id
                                 ).map((pokemon, index) =>
                                     <Card
-                                        id={pokemon.id}
-                                        name={capitalize(pokemon.name)}
-                                        image={pokemon.sprites.front_default}
-                                        type={pokemon.types[0].type.name}
-                                        key={index}
                                         pokemon={pokemon}
+                                        name={capitalize(pokemon.name)}
+                                        key={index}
                                     />
                                 )
                             }
