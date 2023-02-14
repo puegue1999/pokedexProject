@@ -60,7 +60,6 @@ class ModalCard extends React.Component<any, any> {
         <div className={this.state.abrirModal}>
           <div className='modalContainer'>
             <div className="contentPokedex"
-              style={{width:"11em"}}
             >
               <div className="iconModal"
                 style={{

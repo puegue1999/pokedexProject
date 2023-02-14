@@ -1,5 +1,3 @@
-import Header from './Header.js';
-import Footer from './Footer.js';
 import AllCards from '../card/AllCards.js';
 import './MainPage.css';
 import React  from 'react';
@@ -8,13 +6,13 @@ function MainPage() {
     return (
         <div className="mainPage">
             <div className="header">
-                <Header />
+                <div className="ball" style={{margin:"0.4em auto", backgroundColor: "#545456"}}/>
             </div>
             <div className="mainBody">
                 <AllCards />
             </div>
             <div className="footer">
-                <Footer />
+                <div className="ball" style={{margin:"-1.8em auto", backgroundColor: "#eee"}} />
             </div>
         </div>
     );

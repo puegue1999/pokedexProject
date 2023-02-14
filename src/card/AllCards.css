@@ -1,9 +1,10 @@
 .mainCards {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 40em;
+    height: 45em;
+    justify-content: space-around;
 }
 
 .sixCards {
@@ -11,6 +12,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    width: 85em;
+}
+
+.pagination {
+    position: fixed;
+    top: 83%;
+    right: 43%;
 }
 
 .all-container {
@@ -18,27 +27,4 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-}
-
-button {
-    cursor: pointer;
-    border: 0;
-    transition-duration: 0.4s;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    color: #FFFFFF;
-    background-color: #282936;
-    border-radius: 1.625em;
-    margin: 3em;
-    width: 3em;
-    height: 3em;
-}
-
-button:hover {
-    background-color: #3A354D;
-}
-
-button:disabled {
-    background-color: #B8C6CF;
-    color: #7F898F;
-    cursor: auto;
 }

@@ -4,22 +4,22 @@ import Card from './Card.js';
 import Loader from './Loader.js';
 import './AllCards.css';
 import React  from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { PaginationControl } from 'react-bootstrap-pagination-control';
 
 function AllCards() {
 
     localStorage.setItem('pesquisou', 'false');
     const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?offset=0&limit=15');
-    const [nextPage, setNextPage] = useState(null);
-    const [previusPage, setPreviusPage] = useState(null);
+    const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?offset=0&limit=18');
+    const [page, setPage] = useState(1);
 
 
     const getAllPokemon = async (url) => {
         localStorage.removeItem('pesquisou');
         localStorage.setItem('pesquisou', 'true');
         const result = await axios.get(url);
-        console.log(result.data);
 
         const getPokemon = async (res) => {
             const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${res}`);
@@ -30,8 +30,6 @@ function AllCards() {
         }
 
         result.data.results.map((pokemon) => getPokemon(pokemon.name));
-        setNextPage(result.data.next);
-        setPreviusPage(result.data.previous);
         await sleep(1000);
         setLoading(false);
     }
@@ -50,30 +48,17 @@ function AllCards() {
         }
     }, [url]);
 
-    const returnPage = () => {
+    useEffect(() => {
         setLoading(true);
         while (pokemons.length) pokemons.pop();
-        setUrl(previusPage);
-    }
-
-    const proxPage = () => {
-        setLoading(true);
-        while (pokemons.length) pokemons.pop();
-        setUrl(nextPage);
-    }
+        setUrl('https://pokeapi.co/api/v2/pokemon?offset=' + ((page-1)*18) + '&limit=18');
+    }, [page]);
 
     return (
         loading ? (
                 <Loader className="mainCards" />
             ) : (
                 <div className="mainCards">
-                    <div className="buttons">
-                        <button
-                            onClick={e => returnPage()}
-                            disabled={!previusPage}>
-                                <spam>&#9664; </spam>
-                        </button>
-                    </div>
                     <div className="sixCards">
                         <div className="all-container">
                             {
@@ -89,12 +74,17 @@ function AllCards() {
                             }
                         </div>
                     </div>
-                    <div>
-                        <button
-                            onClick={e => proxPage()}
-                            disabled={!nextPage}>
-                                <spam>&#9654; </spam>
-                        </button>
+                    <div className='position'>
+                        <PaginationControl
+                            page={page}
+                            between={2}
+                            total={1279}
+                            limit={18}
+                            changePage={(page) => {
+                                setPage(page);
+                            }}
+                            ellipsis={1}
+                        />
                     </div>
                 </div>
             )
